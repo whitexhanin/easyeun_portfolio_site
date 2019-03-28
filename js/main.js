@@ -52,23 +52,25 @@ $(function(){
 });
 
 	$(window).scroll(function(){
-		var t=$(this).scrollTop();
-		// console.log("t : "+t);
+		var t=$(this).scrollTop()+600;
+		console.log("t : "+t);
 
-		if(t < $(".content2").offset().top){ // if(t < 700){
+		if(t >= $(".title_wrap").offset().top && t <= $(".content2").offset().top){ 
 			n=0;
+			console.log($(".title_wrap").offset().top);
+			console.log($(".content2").offset().top);
 		}
-		else if(t < $(".content3").offset().top){ // if(t < 1400){
+		else if(t >= $(".content2").offset().top && t <= $(".content3").offset().top){ 
 			n=1;
+			console.log($(".content2").offset().top); 
+			console.log($(".content3").offset().top);
+
 		}
-		// else if(t < $(".content2").offset().top){ // if(t < 2100){
-		// 	n=1;
-		// }
-		else{
-			n=1;
+		else if(t > $(".content3").offset().top){
+			n=2;
 		}
 
-		if(t > 500){
+		if(t > 700){
 			if($(".fixed_nav").hasClass("show") == false){
 				$(".fixed_nav").addClass("show");
 			}
@@ -80,6 +82,9 @@ $(function(){
 		$(".nav li").eq(n).find("a").addClass("on");
 		$(".fixed_nav a").removeClass("on");
 		$(".fixed_nav li").eq(n).find("a").addClass("on");
+
+
+
 
 	});
 
@@ -108,11 +113,11 @@ $(function(){
 
 
 	/****skill****/
-    jQuery('.skillbar').each(function(){
-	jQuery(this).find('.skillbar-bar').animate({
-		width:jQuery(this).attr('data-percent')
-	},6000);
-});
+//     jQuery('.skillbar').each(function(){
+// 	jQuery(this).find('.skillbar-bar').animate({
+// 		width:jQuery(this).attr('data-percent')
+// 	},6000);
+// });
 
     /********** popup ui **********/
 /*	if($(".popup").length > 0){
@@ -210,25 +215,25 @@ $(function(){
 
 
 	/********** mansonry  **********/
-	mansonryDrawing(".gallery");
-	function mansonryDrawing(ele){
-		var $grid=$(ele).masonry({
-			itemSelector: ".grid-item",
-			percentPosition: true,
-			columnWidth: ".grid-sizer"
-		});
-	}
-	$(window).resize(function(){
-		var w=$("body").width();
-		// console.log("w : "+w);
+// 	mansonryDrawing(".gallery");
+// 	function mansonryDrawing(ele){
+// 		var $grid=$(ele).masonry({
+// 			itemSelector: ".grid-item",
+// 			percentPosition: true,
+// 			columnWidth: ".grid-sizer"
+// 		});
+// 	}
+// 	$(window).resize(function(){
+// 		var w=$("body").width();
+// 		// console.log("w : "+w);
 
-		if(w > 1075){
-			$(".transparency").removeClass("active");
-			$(".mobile_nav").removeClass("active");
-		}
+// 		if(w > 1075){
+// 			$(".transparency").removeClass("active");
+// 			$(".mobile_nav").removeClass("active");
+// 		}
 
-	});
+// 	});
 
-	$(window).trigger("resize");
-	$(window).trigger("scroll");
-});
+// 	$(window).trigger("resize");
+// 	$(window).trigger("scroll");
+ });
